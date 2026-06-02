@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Selvam | Web Developer</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="logo">Selvam</div>
+
+  <nav class="nav-links">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">skills</a>
+    <a href="#certificates">Certificates</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+    <button class="toggle-btn" id="themeToggle">🌞</button>
+
+
+  </nav>
+</header>
+
+<!-- HERO -->
+<section id="home" class="hero">
+  <h1>Hi, I'm <span class="gradient-text">Selvam</span></h1>
+  <h2><span id="typing"></span></h2>
+  <p>I design and build immersive, animated, high-performance web experiences.</p>
+
+  <div class="buttons">
+    <a href="#projects" class="btn primary">View Projects</a>
+
+    <a
+      href="https://drive.google.com/uc?export=download&id=1G_RdEpf1gw6Hu-L7EPPvNyk0_B-kRzzv"
+      target="_blank"
+      class="btn outline resume-btn"
+    >
+      Download Resume
+    </a>
+  </div>
+</section>
+<section id="about">
+  <div class="about-container">
+
+    <!-- LEFT SIDE IMAGE -->
+    <div class="about-image">
+      <img src="selvam.png" alt="Selvam">
+    </div>
+
+    <!-- RIGHT SIDE CONTENT -->
+    <div class="about-content">
+      <h2 class="section-title">About Me</h2>
+
+      <p>
+        I am a passionate and self-driven Software Developer with a strong
+        interest in Web Development and Artificial Intelligence.
+        I enjoy building modern, responsive, and user-friendly applications
+        that solve real-world problems.
+      </p>
+
+      <p>
+        I have experience in frontend development, CRM systems,
+        and portfolio-based projects. I continuously improve my skills
+        by working on real-world projects and internships.
+      </p>
+
+      <!-- Stats -->
+      <div class="about-stats">
+        <div class="stat">
+          <h3>10+</h3>
+          <p>Projects Completed</p>
+        </div>
+
+        <div class="stat">
+          <h3>5+</h3>
+          <p>Technologies</p>
+        </div>
+
+        <div class="stat">
+          <h3>2+</h3>
+          <p>Internships</p>
+        </div>
+      </div>
+
+      <a href="resume.pdf" class="btn">Download Resume</a>
+    </div>
+
+  </div>
+</section>
+
+
+<section id="skills">
+  <h2 class="section-title">My Skills</h2>
+
+  <div class="skills-grid">
+
+    <div class="skill-card">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg">
+      <h3>HTML</h3>
+    </div>
+
+    <div class="skill-card">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg">
+      <h3>CSS</h3>
+    </div>
+
+    <div class="skill-card">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg">
+      <h3>JavaScript</h3>
+    </div>
+
+    <div class="skill-card">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg">
+      <h3>React</h3>
+    </div>
+
+    <div class="skill-card">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg">
+      <h3>Node.js</h3>
+    </div>
+
+    <div class="skill-card">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg">
+      <h3>MongoDB</h3>
+    </div>
+
+    <div class="skill-card">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg">
+      <h3>Git</h3>
+    </div>
+
+    <div class="skill-card">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg">
+      <h3>GitHub</h3>
+    </div>
+
+  </div>
+</section>
+<section id="certificates">
+
+<h2 class="section-title">My Certificates</h2>
+
+<div class="certificates-container">
+<div class="certificate-card">
+
+  <img src="certificates/future-interns.png"
+      class="certificate-thumb"
+      onclick="openCertificate('certificates/future-interns.png')">
+
+  <h3>Future Interns Internship</h3>
+  <p>Completed internship program working on real-world projects.</p>
+
+</div>
+
+<div class="certificate-card">
+
+  <img src="certificates/java-programming.jpg"
+      class="certificate-thumb"
+      onclick="openCertificate('certificates/java-programming.jpg')">
+
+  <h3>Java Programming Certification</h3>
+  <p>Successfully completed Java Programming course.</p>
+
+</div>
+
+<div class="certificate-card">
+
+  <div class="pdf-thumb"
+      onclick="openCertificate('certificates/nptel-certificate.pdf')">
+      📄
+  </div>
+
+  <h3>NPTEL Big Data Computing</h3>
+  <p>Completed NPTEL course in Big Data Computing.</p>
+
+</div>
+
+</div>
+</section>
+
+<section id="projects" class="projects-section">
+  <h2 class="section-title">My Projects</h2>
+
+  <div class="projects-container">
+
+    <!-- Portfolio Project -->
+    <div class="project-card">
+      <img src="portfolio.png" alt="Portfolio Project">
+      <h3>Personal Portfolio</h3>
+      <p>Responsive portfolio website with dark/light mode toggle.</p>
+      <div class="project-buttons">
+        <a href="https://selvam2305.github.io/FUTURE_FS_01/" target="_blank">Live</a>
+        <a href="https://github.com/Selvam2305/FUTURE_FS_01" target="_blank">GitHub</a>
+      </div>
+    </div>
+
+    <!-- CRM Project -->
+    <div class="project-card">
+      <img src="crm.jpg" alt="CRM Project">
+      <h3>CRM System</h3>
+      <p>Customer management system using local storage.</p>
+      <div class="project-buttons">
+        <a href="https://selvam2305.github.io/FUTURE_FS_02/" target="_blank">Live</a>
+        <a href="https://github.com/Selvam2305/FUTURE_FS_02" target="_blank">GitHub</a>
+      </div>
+    </div>
+
+    <!-- Cafe Project -->
+    <div class="project-card">
+      <img src="cafe.jpg" alt="Cafe Website">
+      <h3>Cafe Website</h3>
+      <p>Modern cafe website with reservation section.</p>
+      <div class="project-buttons">
+        <a href=" https://selvam2305.github.io/FUTURE_FS_03/" target="_blank">Live</a>
+        <a href="https://github.com/Selvam2305/FUTURE_FS_03" target="_blank">GitHub</a>
+      </div>
+    </div>
+
+
+</section>
+
+<section id="contact" class="contact-section">
+  <h2 class="contact-title">Contact Me</h2>
+
+  <form id="contactForm">
+    <input type="text" name="name" placeholder="Your Name" required />
+    <input type="email" name="email" placeholder="Your Email" required />
+    <textarea name="message" placeholder="Your Message" required></textarea>
+    <button type="submit" class="submit-btn">Send Message</button>
+  </form>
+</section>
+
+
+<!-- SUCCESS MESSAGE -->
+<div id="successMessage" class="success-message">
+  ✅ Message sent successfully!
+</div>
+
+<script>
+  const toggleBtn = document.getElementById("themeToggle");
+  const body = document.body;
+
+  toggleBtn.addEventListener("click", () => {
+    body.classList.toggle("light");
+
+    // Icon change
+    if (body.classList.contains("light")) {
+      toggleBtn.innerHTML = "🌙";
+    } else {
+      toggleBtn.innerHTML = "🌞";
+    }
+  });
+</script>
+<button id="topBtn">↑</button>
+    <div id="certificateModal" class="certificate-modal">
+<span class="close-btn" onclick="closeCertificate()">×</span>
+
+<img id="certificateImage" />
+
+<iframe id="certificatePDF"></iframe>
+
+</div>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+AOS.init({
+duration:1000,
+once:true
+});
+</script>
+</body>
+  <script src="script.js"></script>
+</html>
