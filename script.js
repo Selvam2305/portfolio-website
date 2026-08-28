@@ -1,6 +1,6 @@
 /* ==========================================================================
    SELVAM PORTFOLIO - MAIN SCRIPT
-   Clean, Consolidated JavaScript Logic
+   Clean, Consolidated JavaScript Logic with Live Backend API Support
    ========================================================================== */
 
 // 1. MOBILE NAVIGATION MENU TOGGLE
@@ -65,14 +65,19 @@ if (contactForm) {
     const emailInput = document.querySelector("input[name='email']");
     const messageInput = document.querySelector("textarea[name='message']");
 
-    const name = nameInput ? nameInput.value : "";
-    const email = emailInput ? emailInput.value : "";
-    const message = messageInput ? messageInput.value : "";
+    const name = nameInput ? nameInput.value.trim() : "";
+    const email = emailInput ? emailInput.value.trim() : "";
+    const message = messageInput ? messageInput.value.trim() : "";
 
     const successMsg = document.getElementById("successMessage");
 
+    // Dynamic backend endpoint (Local server or Cloud MongoDB API)
+    const API_ENDPOINT = (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1")
+      ? "http://localhost:5000/api/contact"
+      : "https://selvam-portfolio-backend.onrender.com/api/contact";
+
     try {
-      const response = await fetch("http://localhost:5000/api/contact", {
+      const response = await fetch(API_ENDPOINT, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -92,7 +97,7 @@ if (contactForm) {
         alert("Failed to send message. Please try again.");
       }
     } catch (error) {
-      // Fallback response for demonstration / client side
+      console.error("Submission error:", error);
       if (successMsg) {
         successMsg.style.display = "block";
         setTimeout(() => {
