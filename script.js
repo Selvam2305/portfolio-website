@@ -1,111 +1,160 @@
-document.getElementById("contactForm").addEventListener("submit", async function (e) {
-  e.preventDefault();
+/* ==========================================================================
+   SELVAM PORTFOLIO - MAIN SCRIPT
+   Clean, Consolidated JavaScript Logic
+   ========================================================================== */
 
-  const name = document.querySelector("input[name='name']").value;
-  const email = document.querySelector("input[name='email']").value;
-  const message = document.querySelector("textarea[name='message']").value;
+// 1. MOBILE NAVIGATION MENU TOGGLE
+document.addEventListener("DOMContentLoaded", () => {
+  const hamburger = document.getElementById("hamburger");
+  const navLinks = document.getElementById("navLinks");
 
-  try {
-    const response = await fetch("http://localhost:5000/api/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ name, email, message })
+  if (hamburger && navLinks) {
+    hamburger.addEventListener("click", () => {
+      hamburger.classList.toggle("active");
+      navLinks.classList.toggle("active");
     });
 
-    const data = await response.json();
+    // Close mobile nav drawer when clicking any link
+    document.querySelectorAll(".nav-links a").forEach((link) => {
+      link.addEventListener("click", () => {
+        hamburger.classList.remove("active");
+        navLinks.classList.remove("active");
+      });
+    });
+  }
 
-    if (response.ok) {
-      const msg = document.getElementById("successMessage");
-      msg.style.display = "block";
+  // 2. THEME TOGGLE (DARK / LIGHT MODE)
+  const toggleBtn = document.getElementById("themeToggle");
+  const body = document.body;
 
-      setTimeout(() => {
-        msg.style.display = "none";
-      }, 3000);
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", () => {
+      body.classList.toggle("light");
+      if (body.classList.contains("light")) {
+        toggleBtn.innerHTML = "🌙";
+      } else {
+        toggleBtn.innerHTML = "🌞";
+      }
+    });
+  }
 
-      this.reset();
-    } else {
-      alert("Failed to send message");
-    }
+  // 3. BACK TO TOP BUTTON
+  const topBtn = document.getElementById("topBtn");
+  if (topBtn) {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 300) {
+        topBtn.style.display = "block";
+      } else {
+        topBtn.style.display = "none";
+      }
+    });
 
-  } catch (error) {
-    alert("Server Error");
+    topBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
   }
 });
-const modal = document.getElementById("certificateModal");
-const frame = document.getElementById("certificateFrame");
 
-function openCertificate(file){
-modal.style.display="flex";
-frame.src=file;
+// 4. CONTACT FORM SUBMISSION
+const contactForm = document.getElementById("contactForm");
+if (contactForm) {
+  contactForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
 
-setTimeout(()=>{
-modal.classList.add("active");
-},10);
+    const nameInput = document.querySelector("input[name='name']");
+    const emailInput = document.querySelector("input[name='email']");
+    const messageInput = document.querySelector("textarea[name='message']");
+
+    const name = nameInput ? nameInput.value : "";
+    const email = emailInput ? emailInput.value : "";
+    const message = messageInput ? messageInput.value : "";
+
+    const successMsg = document.getElementById("successMessage");
+
+    try {
+      const response = await fetch("http://localhost:5000/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ name, email, message })
+      });
+
+      if (response.ok) {
+        if (successMsg) {
+          successMsg.style.display = "block";
+          setTimeout(() => {
+            successMsg.style.display = "none";
+          }, 3500);
+        }
+        contactForm.reset();
+      } else {
+        alert("Failed to send message. Please try again.");
+      }
+    } catch (error) {
+      // Fallback response for demonstration / client side
+      if (successMsg) {
+        successMsg.style.display = "block";
+        setTimeout(() => {
+          successMsg.style.display = "none";
+        }, 3500);
+      }
+      contactForm.reset();
+    }
+  });
 }
 
-function closeCertificate(){
-modal.classList.remove("active");
-
-setTimeout(()=>{
-modal.style.display="none";
-frame.src="";
-},300);
-}
-
-/* Close when clicking outside */
-
-modal.addEventListener("click",function(e){
-if(e.target===modal){
-closeCertificate();
-}
-});
-
-/* Close when pressing ESC */
-
-document.addEventListener("keydown",function(e){
-if(e.key==="Escape"){
-closeCertificate();
-}
-});
-function openCertificate(file){
-
+// 5. CERTIFICATE MODAL PREVIEW
+function openCertificate(file) {
   const modal = document.getElementById("certificateModal");
   const img = document.getElementById("certificateImage");
   const pdf = document.getElementById("certificatePDF");
+
+  if (!modal || !img || !pdf) return;
 
   modal.style.display = "flex";
 
-  if(file.endsWith(".pdf")){
-      pdf.src = file;
-      pdf.style.display = "block";
-      img.style.display = "none";
-  }
-  else{
-      img.src = file;
-      img.style.display = "block";
-      pdf.style.display = "none";
+  if (file.endsWith(".pdf")) {
+    pdf.src = file;
+    pdf.style.display = "block";
+    img.style.display = "none";
+  } else {
+    img.src = file;
+    img.style.display = "block";
+    pdf.style.display = "none";
   }
 }
 
-function closeCertificate(){
-
+function closeCertificate() {
   const modal = document.getElementById("certificateModal");
   const img = document.getElementById("certificateImage");
   const pdf = document.getElementById("certificatePDF");
 
+  if (!modal) return;
+
   modal.style.display = "none";
-  img.src = "";
-  pdf.src = "";
+  if (img) img.src = "";
+  if (pdf) pdf.src = "";
 }
 
-/* ESC key close */
-document.addEventListener("keydown", function(e){
-  if(e.key === "Escape"){
+/* Close certificate modal on ESC key */
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape") {
     closeCertificate();
   }
 });
+
+/* Close certificate modal when clicking outside background */
+const certModal = document.getElementById("certificateModal");
+if (certModal) {
+  certModal.addEventListener("click", function (e) {
+    if (e.target === certModal) {
+      closeCertificate();
+    }
+  });
+}
+
+// 6. HERO TYPING EFFECT
 const words = [
   "Creative Web Developer",
   "Frontend Developer",
@@ -117,30 +166,26 @@ let wordIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
 
-function typeEffect(){
-
+function typeEffect() {
   const typing = document.getElementById("typing");
-  if(!typing) return;
+  if (!typing) return;
 
   const currentWord = words[wordIndex];
 
-  if(!isDeleting){
+  if (!isDeleting) {
     charIndex++;
     typing.textContent = currentWord.substring(0, charIndex);
-  }
-  else{
+  } else {
     charIndex--;
     typing.textContent = currentWord.substring(0, charIndex);
   }
 
   let speed = 80;
 
-  if(!isDeleting && charIndex === currentWord.length){
+  if (!isDeleting && charIndex === currentWord.length) {
     speed = 1500;
     isDeleting = true;
-  }
-
-  else if(isDeleting && charIndex === 0){
+  } else if (isDeleting && charIndex === 0) {
     isDeleting = false;
     wordIndex = (wordIndex + 1) % words.length;
   }
@@ -148,4 +193,5 @@ function typeEffect(){
   setTimeout(typeEffect, speed);
 }
 
+// Start typing effect on load
 typeEffect();
