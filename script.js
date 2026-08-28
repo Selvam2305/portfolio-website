@@ -1,6 +1,6 @@
 /* ==========================================================================
    SELVAM PORTFOLIO - MAIN SCRIPT
-   Clean, Consolidated JavaScript Logic with Live Backend API Support
+   Connected to Live Render Backend & Cloud MongoDB Atlas Database
    ========================================================================== */
 
 // 1. MOBILE NAVIGATION MENU TOGGLE
@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// 4. CONTACT FORM SUBMISSION
+// 4. CONTACT FORM SUBMISSION (Connected to Live Cloud MongoDB Atlas)
 const contactForm = document.getElementById("contactForm");
 if (contactForm) {
   contactForm.addEventListener("submit", async function (e) {
@@ -71,10 +71,8 @@ if (contactForm) {
 
     const successMsg = document.getElementById("successMessage");
 
-    // Dynamic backend endpoint (Local server or Cloud MongoDB API)
-    const API_ENDPOINT = (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1")
-      ? "http://localhost:5000/api/contact"
-      : "https://selvam-portfolio-backend.onrender.com/api/contact";
+    // Live Render Backend URL connected to MongoDB Atlas
+    const API_ENDPOINT = "https://portfolio-backend-csf4.onrender.com/api/contact";
 
     try {
       const response = await fetch(API_ENDPOINT, {
