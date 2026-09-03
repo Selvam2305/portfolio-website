@@ -169,18 +169,15 @@ section {
     padding: clamp(30px, 4vh, 60px) 6%;
   }
 
-  /* Contact Section + Footer Docked Viewport Framing */
+  /* Contact Section + Docked Footer Viewport Framing */
   #contact.contact-section {
     min-height: calc(100vh - 75px);
-    max-height: calc(100vh - 75px);
-    height: calc(100vh - 75px);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 5% 0 5% !important;
+    padding: 30px 5% 0 5% !important;
     box-sizing: border-box;
-    overflow: hidden;
   }
 }
 
@@ -188,7 +185,7 @@ section {
 .contact-title {
   font-size: clamp(28px, 4vw, 42px);
   text-align: center;
-  margin-bottom: clamp(15px, 2.5vh, 35px);
+  margin-bottom: clamp(20px, 3vh, 35px);
   font-weight: 600;
   color: var(--text-color);
 }
@@ -705,22 +702,23 @@ body.light .btn.outline {
 }
 
 .contact-title {
-  margin-bottom: clamp(10px, 1.5vh, 20px);
+  font-size: clamp(30px, 4vw, 42px);
+  margin-bottom: clamp(15px, 2.5vh, 28px);
 }
 
 #contactForm {
   width: 100%;
-  max-width: 480px;
+  max-width: 520px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 }
 
 #contactForm input,
 #contactForm textarea {
   width: 100%;
-  padding: 10px 16px;
-  font-size: 15px;
+  padding: 14px 18px;
+  font-size: 16px;
   line-height: 1.4;
   border-radius: 12px;
   border: 1px solid #ccc;
@@ -731,18 +729,18 @@ body.light .btn.outline {
 }
 
 #contactForm input {
-  height: 44px;
+  height: 52px;
 }
 
 #contactForm textarea {
-  height: 90px;
-  resize: none;
+  height: 120px;
+  resize: vertical;
 }
 
 #contactForm input::placeholder,
 #contactForm textarea::placeholder {
   color: #555555;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 #contactForm input:focus,
@@ -753,17 +751,17 @@ body.light .btn.outline {
 }
 
 #contactForm .submit-btn {
-  height: 46px;
+  height: 54px;
   background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
   color: white;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
-  padding: 10px;
+  padding: 14px;
   border: none;
   border-radius: 30px;
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  margin-top: 2px;
+  margin-top: 4px;
 }
 
 #contactForm .submit-btn:hover {
@@ -774,12 +772,12 @@ body.light .btn.outline {
 /* FOOTER */
 .footer {
   width: 100%;
-  padding: 14px 8%;
+  padding: 20px 8%;
   background: var(--nav-bg);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   border-top: 1px solid var(--card-border);
-  margin-top: auto;
+  margin-top: 25px;
 }
 
 .footer-content {
@@ -971,9 +969,6 @@ body.light .btn.outline {
 
   #contact.contact-section {
     min-height: auto !important;
-    max-height: none !important;
-    height: auto !important;
-    overflow: visible !important;
     padding: 40px 5% 0 5% !important;
   }
 
