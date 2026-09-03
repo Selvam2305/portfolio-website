@@ -146,11 +146,27 @@ body {
 
 /* 3. LAYOUT & SECTION DEFAULTS */
 section {
-  scroll-margin-top: 85px;
+  scroll-margin-top: 75px;
   width: 100%;
   padding: clamp(45px, 6vh, 85px) 8%;
   position: relative;
   clear: both;
+}
+
+/* Desktop Full Viewport Section Framing - Prevents adjacent sections from bleeding */
+@media (min-width: 992px) {
+  #about,
+  #skills,
+  #certificates,
+  #projects,
+  #contact {
+    min-height: calc(100vh - 75px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+  }
 }
 
 .section-title,
@@ -325,14 +341,6 @@ body.light .btn.outline {
 }
 
 /* 5. ABOUT SECTION */
-#about {
-  min-height: calc(100vh - 85px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 .about-container {
   display: flex;
   align-items: center;
@@ -398,12 +406,6 @@ body.light .btn.outline {
 }
 
 /* 6. SKILLS SECTION */
-#skills {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -872,8 +874,8 @@ body.light .btn.outline {
   }
 }
 
-/* Tablet & Mobile Screens (768px and below) */
-@media (max-width: 768px) {
+/* Tablet & Mobile Screens (991px and below) */
+@media (max-width: 991px) {
   .navbar {
     padding: 0 5%;
   }
@@ -904,12 +906,14 @@ body.light .btn.outline {
     right: 0;
   }
 
-  section {
-    padding: 60px 5%;
-  }
-
-  #about {
-    min-height: auto;
+  section,
+  #about,
+  #skills,
+  #certificates,
+  #projects,
+  #contact {
+    min-height: auto !important;
+    padding: 60px 5% !important;
   }
 
   .about-container {
@@ -959,7 +963,7 @@ body.light .btn.outline {
   }
 
   section {
-    padding: 50px 4%;
+    padding: 50px 4% !important;
     scroll-margin-top: 70px;
   }
 
